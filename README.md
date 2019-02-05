@@ -4,38 +4,14 @@ This is the Git repo of the Docker [official image](https://docs.docker.com/dock
 ## Pre-Requirements
 First install `docker`, `docker compose` for your machine and start it. How this is done is very well documented all over the internet.
 
-### Build the project
+### Run the project
 You need generate the Rails skeleton app using docker-compose run:
 ```
-$ docker-compose run app rails new . --force --database=mysql --skip-bundle
+$ docker-compose up
 ```
-
-Compose will build the image for the web service using the Dockerfile. Then it’ll run rails new inside a new container, using that image. Once it’s done, you should have generated a fresh app:
+### Enter app container
 ```
- $ ls -l
-total 56
--rw-r--r--   1 user  staff   488 Nov 22 22:02 Dockerfile
--rw-r--r--   1 user  staff  1521 Nov 22 01:36 Gemfile
--rw-r--r--   1 user  staff  4006 Nov 22 01:36 Gemfile.lock
--rw-r--r--   1 user  staff   478 Nov 22 01:17 README.rdoc
--rw-r--r--   1 user  staff   249 Nov 22 01:17 Rakefile
-drwxr-xr-x   8 user  staff   272 Nov 22 01:36 app
-drwxr-xr-x   7 user  staff   238 Nov 22 01:36 bin
-drwxr-xr-x  11 user  staff   374 Nov 22 10:38 config
--rw-r--r--   1 user  staff   153 Nov 22 01:17 config.ru
-drwxr-xr-x   5 user  staff   170 Nov 22 10:46 db
--rw-r--r--   1 user  staff   420 Nov 22 22:02 docker-compose.yml
-drwxr-xr-x   4 user  staff   136 Nov 22 01:36 lib
-drwxr-xr-x   4 user  staff   136 Nov 22 01:39 log
-drwxr-xr-x   7 user  staff   238 Nov 22 01:36 public
-drwxr-xr-x   9 user  staff   306 Nov 22 01:27 test
-drwxr-xr-x   6 user  staff   204 Nov 22 01:39 tmp
-drwxr-xr-x   3 user  staff   102 Nov 22 01:36 vendor
-```
-
-Now that you’ve got rails app, you need to build the image again.
-```
-docker-compose build
+$ docker-compose run app bash
 ```
 
 ### Connect the database
@@ -53,11 +29,11 @@ default: &default
 
 development:
   <<: *default
-  database: dev
+  database: demo_development
 
 test:
   <<: *default
-  database: dev
+  database: demo_test
 ```
 
 You can now boot the app with:
