@@ -36,15 +36,6 @@ test:
   database: demo_test
 ```
 
-You can now boot the app with:
-```
-docker-compose up -d
-```
-
-Finally, you need to create the database. In another terminal, run:
-```
-docker-compose run app rake db:create
-```
 
 That’s it. Your app should now be running on port 3000 on your Docker daemon. If you’re using Docker Machine, then `docker-machine ip MACHINE_VM` returns the Docker host IP address.
 ```
@@ -55,6 +46,8 @@ $ docker-machine ip default
 http://192.168.99.100:3000/
 
 ![rails](https://cloud.githubusercontent.com/assets/5398914/20524938/578c3872-b100-11e6-8a7f-d359f982bd24.png)
+
+To explore the database with PHPMyAdmin, browse on port 5000
 
 To stop container then run following command:
 ```
