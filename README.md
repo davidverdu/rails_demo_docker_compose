@@ -11,7 +11,7 @@ $ docker-compose up
 ```
 ### Enter app container
 ```
-$ docker-compose run app bash
+$ docker-compose exec -u user app bash
 ```
 
 ### Connect the database
