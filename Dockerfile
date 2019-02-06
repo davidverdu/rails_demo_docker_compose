@@ -19,5 +19,8 @@ RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT
 COPY . $APP_ROOT
 
+ENV USERID 1000
+RUN adduser --uid $USERID --disabled-password user
+
 EXPOSE  3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
